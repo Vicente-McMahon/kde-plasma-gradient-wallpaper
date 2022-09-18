@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="Colour1" type="String">
+      <label>Colour1</label>
+      <default>blue</default>
+    </entry>
+    <entry name="Colour2" type="String">
+      <label>Colour2</label>
+      <default>green</default>
+    </entry>
+    <entry name="Point1X" type="int">
+       <label>Point1X</label>
+       <default>512</default>
+       <min>0</min>
+       <max>1024</max>
+    </entry>
+    <entry name="Point1Y" type="int">
+       <label>Point1Y</label>
+       <default>1024</default>
+       <min>0</min>
+       <max>1024</max>
+    </entry>
+    <entry name="Point2X" type="int">
+       <label>Point2X</label>
+       <default>1024</default>
+       <min>0</min>
+       <max>1024</max>
+    </entry>
+    <entry name="Point2Y" type="int">
+       <label>Point2Y</label>
+       <default>512</default>
+       <min>0</min>
+       <max>1</max>
+    </entry>
+  </group>
+
+</kcfg>
