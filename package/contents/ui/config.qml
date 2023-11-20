@@ -8,16 +8,21 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls 1.0 as QtControls
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrols 2.0 as KQuickControls
+import QtQuick.Window 2.2
 import QtGraphicalEffects 1.0
+import "./Components"
 
 ColumnLayout {
     id: root
     property alias cfg_Colour1: colour1.color
     property alias cfg_Colour2: colour2.color
+    property alias cfg_Colour3: colour3.color
+    property alias cfg_Colour4: colour4.color
     property alias cfg_Point1X: point1x.value
     property alias cfg_Point1Y: point1y.value
     property alias cfg_Point2X: point2x.value
     property alias cfg_Point2Y: point2y.value
+    property alias cfg_Duration: duration.value
 
     RowLayout {
         spacing: PlasmaCore.Units.largeSpacing / 2
@@ -30,7 +35,7 @@ ColumnLayout {
         }
         KQuickControls.ColorButton {
             id: colour1
-            dialogTitle: i18n("Colour1:")
+            dialogTitle: i18n("Colour1")
         }
     }
     RowLayout {
@@ -44,7 +49,28 @@ ColumnLayout {
         }
         KQuickControls.ColorButton {
             id: colour2
-            dialogTitle: i18n("Colour2:")
+            dialogTitle: i18n("Colour2")
+        }
+    }
+    QtControls.Label {
+        Layout.minimumWidth: width
+        Layout.maximumWidth: width
+        width: formAlignment - PlasmaCore.Units.largeSpacing
+        horizontalAlignment: Text.AlignRight
+        text: i18nd("plasma_wallpaper.gradient", "Colour to animate to.")
+    }
+    RowLayout {
+        spacing: PlasmaCore.Units.largeSpacing / 2
+        QtControls.Label {
+            Layout.minimumWidth: width
+            Layout.maximumWidth: width
+            width: formAlignment - PlasmaCore.Units.largeSpacing
+            horizontalAlignment: Text.AlignRight
+            text: i18nd("plasma_wallpaper.gradient", "Colour3:")
+        }
+        KQuickControls.ColorButton {
+            id: colour3
+            dialogTitle: i18n("Colour3")
         }
     }
     RowLayout {
@@ -54,20 +80,33 @@ ColumnLayout {
             Layout.maximumWidth: width
             width: formAlignment - PlasmaCore.Units.largeSpacing
             horizontalAlignment: Text.AlignRight
-            text: i18nd("plasma_wallpaper.gradient", "Preview:")
+            text: i18nd("plasma_wallpaper.gradient", "Colour4:")
         }
-        Rectangle {
-            width: 100
-            height: 50
-            LinearGradient {
-                    anchors.fill: parent
-                    start: Qt.point((cfg_Point1X ?? 512) * parent.width/1024, (cfg_Point1Y ?? 1024) * parent.height/1024)
-                    end: Qt.point((cfg_Point2X ?? 512) * parent.width/1024, (cfg_Point2Y ?? 1024) * parent.height/1024)
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: cfg_Colour1 || "blue" }
-                        GradientStop { position: 1.0; color: cfg_Colour2 || "green" }
-                    }
-                }
+        KQuickControls.ColorButton {
+            id: colour4
+            dialogTitle: i18n("Colour4")
+        }
+    }
+    QtControls.Label {
+        Layout.minimumWidth: width
+        Layout.maximumWidth: width
+        width: formAlignment - PlasmaCore.Units.largeSpacing
+        horizontalAlignment: Text.AlignRight
+        text: i18nd("plasma_wallpaper.gradient", "How long the animation takes.")
+    }
+    RowLayout {
+        spacing: PlasmaCore.Units.largeSpacing / 2
+        QtControls.Label {
+            Layout.minimumWidth: width
+            Layout.maximumWidth: width
+            width: formAlignment - PlasmaCore.Units.largeSpacing
+            horizontalAlignment: Text.AlignRight
+            text: i18nd("plasma_wallpaper.gradient", "Duration:")
+        }
+        QtControls.Slider {
+            id: duration
+            minimumValue: 500
+            maximumValue: 120000
         }
     }
     RowLayout {
