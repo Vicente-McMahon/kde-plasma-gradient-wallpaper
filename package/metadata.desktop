@@ -54,5 +54,5 @@ X-KDE-PluginInfo-Author=
 X-KDE-PluginInfo-Email=
 X-KDE-PluginInfo-Name=gradient
 X-KDE-PluginInfo-License=LGPL-2.1+
-X-KDE-PluginInfo-Version=2.0
+X-KDE-PluginInfo-Version=2.0.1
 X-Plasma-MainScript=ui/main.qml
