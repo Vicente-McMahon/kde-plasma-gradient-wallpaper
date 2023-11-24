@@ -17,10 +17,9 @@ Item {
     property var colour3: "green"
     property var colour4: "blue"
     property var theDuration: 500
-    property var point1X: 0
-    property var point1Y: 0
-    property var point2X: 1024
-    property var point2Y: 1024
+    property var xCoefficient: 1
+    property var yCoefficient: 1
+    property var cCoefficient: 0
     property alias theSequentialAnimation: sequentialAnimation
     property alias theAnimation1: animation1
     property alias theAnimation2: animation2
@@ -44,19 +43,24 @@ Item {
         }
     }
     Rectangle {
+        id: rectangle
         width: parent.width
         height: parent.height
+        anchors.centerIn: parent.Center
+        transform: Rotation { origin.x: rectangle.width/2; origin.y: rectangle.height/2; angle: angle }
+        antialiasing: true
         color: "black"
+        rotation: angle
         LinearGradient {
             id: gradient
             anchors.fill: parent
-            start: Qt.point((point1X ?? 512) * parent.width/1024, (point1Y ?? 1024) * parent.height/1024)
-            end: Qt.point((point2X ?? 512) * parent.width/1024, (point2Y ?? 1024) * parent.height/1024)
+            anchors.centerIn: parent
+            start: Qt.point(0, ((-0*xCoefficient-cCoefficient)/yCoefficient ?? 0) * parent.height)
+            end: Qt.point(parent.width, ((-1*xCoefficient-cCoefficient)/yCoefficient ?? 1) * parent.height)
             gradient: Gradient {
                 GradientStop { position: 0.0; color: colour1 }
                 GradientStop { position: 1.0; color: colour2 }
             }
-            visible: true
         }
     }
 }

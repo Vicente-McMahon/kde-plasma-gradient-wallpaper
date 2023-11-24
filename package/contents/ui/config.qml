@@ -5,12 +5,12 @@
 
 import QtQuick 2.1
 import QtQuick.Layouts 1.0
-import QtQuick.Controls 1.0 as QtControls
+import QtQuick.Controls 2.0 as QtControls
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kquickcontrols 2.0 as KQuickControls
 import QtQuick.Window 2.2
 import QtGraphicalEffects 1.0
-import "./Components"
+//import "./Components"
 
 ColumnLayout {
     id: root
@@ -18,10 +18,13 @@ ColumnLayout {
     property alias cfg_Colour2: colour2.color
     property alias cfg_Colour3: colour3.color
     property alias cfg_Colour4: colour4.color
-    property alias cfg_Point1X: point1x.value
-    property alias cfg_Point1Y: point1y.value
-    property alias cfg_Point2X: point2x.value
-    property alias cfg_Point2Y: point2y.value
+    // property alias cfg_Point1X: point1X.value
+    // property alias cfg_Point1Y: point1Y.value
+    // property alias cfg_Point2X: point2X.value
+    // property alias cfg_Point2Y: point2Y.value
+    property alias cfg_X: x.value
+    property alias cfg_Y: y.value
+    property alias cfg_C: c.value
     property alias cfg_Duration: duration.value
 
     RowLayout {
@@ -105,71 +108,38 @@ ColumnLayout {
         }
         QtControls.Slider {
             id: duration
-            minimumValue: 500
-            maximumValue: 120000
+            from: 500
+            to: 20000
         }
     }
     RowLayout {
-        spacing: PlasmaCore.Units.largeSpacing / 2
+        spacing: PlasmaCore.Units.largeSpacing / 4
         QtControls.Label {
             Layout.minimumWidth: width
             Layout.maximumWidth: width
             width: formAlignment - PlasmaCore.Units.largeSpacing
             horizontalAlignment: Text.AlignRight
-            text: i18nd("plasma_wallpaper.gradient", "Point1X(start of gradient):")
+            text: i18nd("plasma_wallpaper.gradient", "Co-efficients of x, y, and c:")
         }
-        QtControls.Slider {
-            id: point1x
-            minimumValue: 0
-            maximumValue: 1024
+        QtControls.SpinBox {
+            id: x
+            from: -128
+            value: 0
+            to: 128
         }
-    }
-    RowLayout {
-        spacing: PlasmaCore.Units.largeSpacing / 2
-        QtControls.Label {
-            Layout.minimumWidth: width
-            Layout.maximumWidth: width
-            width: formAlignment - PlasmaCore.Units.largeSpacing
-            horizontalAlignment: Text.AlignRight
-            text: i18nd("plasma_wallpaper.gradient", "Point1Y(start of gradient):")
+        QtControls.SpinBox {
+            id: y
+            from: -128
+            value: 0
+            to: 128
         }
-        QtControls.Slider {
-            id: point1y
-            minimumValue: 0
-            maximumValue: 1024
+        QtControls.SpinBox {
+            id: c
+            from: -128
+            value: 0
+            to: 128
         }
     }
-    RowLayout {
-        spacing: PlasmaCore.Units.largeSpacing / 2
-        QtControls.Label {
-            Layout.minimumWidth: width
-            Layout.maximumWidth: width
-            width: formAlignment - PlasmaCore.Units.largeSpacing
-            horizontalAlignment: Text.AlignRight
-            text: i18nd("plasma_wallpaper.gradient", "  Point2X(end of gradient):")
-        }
-        QtControls.Slider {
-            id: point2x
-            minimumValue: 0
-            maximumValue: 1024
-        }
-    }
-    RowLayout {
-        spacing: PlasmaCore.Units.largeSpacing / 2
-        QtControls.Label {
-            Layout.minimumWidth: width
-            Layout.maximumWidth: width
-            width: formAlignment - PlasmaCore.Units.largeSpacing
-            horizontalAlignment: Text.AlignRight
-            text: i18nd("plasma_wallpaper.gradient", "  Point2Y(end of gradient):")
-        }
-        QtControls.Slider {
-            id: point2y
-            minimumValue: 0
-            maximumValue: 1024
-        }
-    }
-
     Item {
         Layout.fillHeight: true
     }

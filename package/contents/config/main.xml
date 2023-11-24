@@ -26,31 +26,19 @@
         <label>Duration</label>
         <default>3000</default>
         <min>500</min>
-        <max>120000</max>
+        <max>20000</max>
     </entry>
-    <entry name="Point1X" type="int">
-        <label>Point1X</label>
+    <entry name="X" type="int">
+        <label>X</label>
         <default>0</default>
-        <min>0</min>
-        <max>1024</max>
     </entry>
-    <entry name="Point1Y" type="int">
-        <label>Point1Y</label>
+    <entry name="Y" type="int">
+        <label>Y</label>
         <default>0</default>
-        <min>0</min>
-        <max>1024</max>
     </entry>
-    <entry name="Point2X" type="int">
-        <label>Point2X</label>
-        <default>1024</default>
-        <min>0</min>
-        <max>1024</max>
-    </entry>
-    <entry name="Point2Y" type="int">
-        <label>Point2Y</label>
-        <default>1024</default>
-        <min>0</min>
-        <max>1</max>
+    <entry name="C" type="int">
+        <label>C</label>
+        <default>0</default>
     </entry>
   </group>
 

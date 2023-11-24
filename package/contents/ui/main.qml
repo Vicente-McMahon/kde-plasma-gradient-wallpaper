@@ -16,17 +16,19 @@ Item {
     Rectangle {
         width: parent.width
         height: parent.height
+        transformOrigin: Item.Center
+        anchors.centerIn: parent.Center
+        antialiasing: true
         Background {
             id: background
             colour1: wallpaper.configuration.Colour1
             colour2: wallpaper.configuration.Colour2
             colour3: wallpaper.configuration.Colour3
             colour4: wallpaper.configuration.Colour4
-            theDuration: wallpaper.configuration.Duration
-            point1X: wallpaper.configuration.Point1X
-            point1Y: wallpaper.configuration.Point1Y
-            point2X: wallpaper.configuration.Point2X
-            point2Y: wallpaper.configuration.Point2Y
+            xCoefficient: wallpaper.configuration.X
+            yCoefficient: wallpaper.configuration.Y
+            cCoefficient: wallpaper.configuration.C
+            theDuration: wallpaper.configuration.theDuration
         }
     }
     Connections {
@@ -42,6 +44,9 @@ Item {
             background.theAnimation3.to = wallpaper.configuration.Colour1
             background.theAnimation4.to = wallpaper.configuration.Colour2
             background.theSequentialAnimation.start()
+            background.xCoefficient = wallpaper.configuration.X
+            background.yCoefficient = wallpaper.configuration.Y
+            background.cCoefficient = wallpaper.configuration.C
         }
     }
 }
