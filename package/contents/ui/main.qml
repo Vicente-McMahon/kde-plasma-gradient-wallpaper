@@ -28,7 +28,7 @@ Item {
             xCoefficient: wallpaper.configuration.X
             yCoefficient: wallpaper.configuration.Y
             cCoefficient: wallpaper.configuration.C
-            theDuration: wallpaper.configuration.theDuration
+            theDuration: wallpaper.configuration.Duration
         }
     }
     Connections {
